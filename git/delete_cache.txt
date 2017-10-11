@@ -22,3 +22,5 @@ git commit -m 'New beginning'
 git push origin clean
 # 在远程库里将 clean 改成默认分支
 git push origin :master # 删除远端的分支
+
+Gitee 远程端的管理有个 Clear 的选项，选择之后库里的内容就全部删除了。然后再搞一个空白的进去也成。
