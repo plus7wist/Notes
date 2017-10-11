@@ -1,0 +1,24 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    删除 git 库的缓存
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+git 库的缓存意味着可以回滚历史。但是有些时候，特别是当一个库没有协作需求的
+时候，经常可以断定这个库一定不需要回滚了。这个时候缓存就成了负担。
+
+这个时候我的做法是这样的。
+
+cp repo repo_back
+cd repo_back & .... # 删除你不需要的东西
+cd ../repo
+git log | tail  # 查看第一个版本的 hash
+git checkout <hash_of_init_commit> -b clean
+git branch -D master # 删除旧的分支
+cp ../repo_back/* . -r
+git add .
+git commit -m 'New beginning'
+
+远程库方面：
+
+git push origin clean
+# 在远程库里将 clean 改成默认分支
+git push origin :master # 删除远端的分支
