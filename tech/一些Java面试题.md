@@ -1,0 +1,129 @@
+<http://blog.csdn.net/doodoofish/article/details/39841>
+
+### 1. 谈谈final, finally, finalize的区别。
+
+final 是 Java 一个修饰符，表示不能修改。根据场景有很多不同的作用。修饰变量时表示这个变量是不能修改的常量；方法中可以用 final 修饰参数，防止方法更改对象；在方法前用 final 修饰，表示这个方法是不能在子类中覆盖；用 final 修饰类，表示这个类不会派生出子类。具体可以看[维基百科上的介绍](https://en.wikipedia.org/wiki/Final_%28Java%29)。
+
+finally 是 Java 异常处理的一部分，整个的过程是 try {} catch(Exception e) {} finally {}，try 里面如果出现了异常，就会跳到 catch 里面处理异常，之后进入 finally 执行；try 里面如果没有异常，那么也会进 finally。如此一来 finally 里面就可以做一些一定要做的首尾工作，比如把调用相应的 close() 回收资源。
+
+protected void finalize() 是 Java 在垃圾回收的时候使用的一个方法。我感觉是个细枝末节，有兴趣可以看[这篇 CSND](http://blog.csdn.net/shanghui815/article/details/6787855)。
+
+总之，这三个词长得挺像，但是根本没有联系。
+
+### 2. 匿名内部类是否可以继承其它类，是否可以实现接口？
+
+### 3. Static Nested Class 和 Inner Class的不同，说得越多越好
+
+### 4. &和&&的区别
+
+不解释
+
+### 5. HashMap和Hashtable的区别
+
+本王还真不知道有啥区别，我看了看这两篇文章：
+
+<http://www.cnblogs.com/devinzhang/archive/2012/01/13/2321481.html>
+<http://www.importnew.com/7010.html>
+
+我觉得重点在：
+1. Hashtable线程安全；
+2. 如果只需要单一线程，那么使用HashMap性能要好。
+
+### 6. Collection 和 Collections 的区别。
+
+Collection 是一个接口，维护一个集合。有很多喜闻乐见的子接口（Set，List），有更多喜闻乐见的实现类（ArrayList，HashSet，LinkedList）。
+
+Collections 是一个类，是对 Collection 的操作行为包装。API 文档里这样说：
+
+> 此类完全由在 collection 上进行操作或返回 collection 的静态方法组成。它包含在 collection 上操作的多态算法，即“包装器”，包装器返回由指定 collection 支持的新 collection，以及少数其他内容。
+
+### 7. 什么时候用assert。
+
+API级的技术人员有可能会问这个。
+
+### 8. GC是什么? 为什么要有GC?
+
+基础。
+
+### 9. String s = new String("xyz"); 创建了几个String Object?
+
+<http://rednaxelafx.iteye.com/blog/774673>
+<http://www.javaranch.com/journal/200409/ScjpTipLine-StringsLiterally.html>
+
+这个问题网上喷的挺多，我不发表看法，但我觉得至少得明白 String pool。
+
+### 10. Math.round(11.5) 和 Math.round(-11.5)等於多少?
+
+12 和 -11
+
+Math.round(a) 的值就是 (long) Math.floor(a + 0.5d) 的值，但在结果是 NaN 或者太大太小的数时有例外。
+
+### 11. short s1 = 1; s1 = s1 + 1;有什么错?
+
+short s1 = 1; s1 += 1; 是可以通过编译的。这个问题就在与 Java 的类型检查，st + 1 会得到一个 int 类型的数，比 short 长，所以编译是不能通过的。但是 st += 1 就是可以的，啊哈哈哈哈我也不知道为什么。我觉得有可能是 1 的数据类型问题，但是搜了许久也没有结果……
+
+### 12. sleep() 和 wait() 有什么区别?
+搞线程的最爱。
+
+### 13. Java有没有goto?
+
+goto 是 Java 里面的保留字，保留的意思就是你给我留着你别用，我用不用以后再说。于是你 int goto = 1; 是会错的。然而现在还是没实现 goto——私觉得如果不是出了什么大事故，Java 里应该永远不会有 goto。
+
+不过，Java 有带标签的 break 和 continue，算是 goto 的弱化吧。<http://blog.csdn.net/jamesfancy/article/details/1198210>
+
+### 14. 数组有没有length()这个方法? String有没有length()这个方法?
+
+### 15. Overload和Override的区别。Overloaded的方法是否可以改变返回值的类型?
+常问。
+
+### 16. Set里的元素是不能重复的，那么用什么方法来区分重复与否呢? 是用==还是equals()? 它们有何区别?
+
+### 17. 给我一个你最常见到的runtime exception。
+如果你这个答不出来，面试的人会认为你没有实际编程经验。
+
+第十八，error和exception有什么区别?
+
+第十九，List, Set, Map是否继承自Collection接口?
+
+第二十，abstract class和interface有什么区别?
+常问。
+
+第二十一，abstract的method是否可同时是static,是否可同时是native，是否可同时是synchronized?
+
+第二十二，接口是否可继承接口? 抽象类是否可实现(implements)接口? 抽象类是否可继承实体类(concrete class)?
+
+第二十三，启动一个线程是用run()还是start()?
+
+第二十四，构造器Constructor是否可被override?
+
+第二十五，是否可以继承String类?
+
+第二十六，当一个线程进入一个对象的一个synchronized方法后，其它线程是否可进入此对象的其它方法?
+
+第二十七，try {}里有一个return语句，那么紧跟在这个try后的finally {}里的code会不会被执行，什么时候被执行，在return前还是后?
+
+第二十八，编程题: 用最有效率的方法算出2乘以8等於几?
+有C背景的程序员特别喜欢问这种问题。
+
+第二十九，两个对象值相同(x.equals(y) == true)，但却可有不同的hash code，这句话对不对?
+
+第三十，当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递?
+
+第三十一，swtich是否能作用在byte上，是否能作用在long上，是否能作用在String上?
+
+### 32. 编程题: 写一个Singleton出来。
+
+```java
+public class SingleTon {
+    private SingleTon singleTon;
+
+    private SingleTon() {}
+
+    public SingleTon getInstance() {
+        if (singleTon == null) {
+            singleTon = new SingleTon();
+        }
+        return singleTon;
+    }
+}
+```
