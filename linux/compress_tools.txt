@@ -2,40 +2,40 @@
     压缩工具的比较
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-#! /usr/bin/env bash
+    #! /usr/bin/env bash
 
-folder=3.1.0
+    folder=3.1.0
 
-# test_compress 'command prefix' output_suffix
-test_compress() {
-    output=$folder$2
-    time $1 $output $folder >/dev/null 2>&1
-    du -h $output
-}
+    # test_compress 'command prefix' output_suffix
+    test_compress() {
+        output=$folder$2
+        time $1 $output $folder >/dev/null 2>&1
+        du -h $output
+    }
 
-test_compress 'tar -zcf' .tar.gz
-test_compress 'tar -jcf' .tar.bz2
-test_compress 'tar -Jcf' .tar.xz
-test_compress '7z a' .7z
+    test_compress 'tar -zcf' .tar.gz
+    test_compress 'tar -jcf' .tar.bz2
+    test_compress 'tar -Jcf' .tar.xz
+    test_compress '7z a' .7z
 
 结果是这样的：
 
-real	0m2.247s
-user	0m2.236s
-sys	0m0.208s
-48M	3.1.0.tar.gz
+    real	0m2.247s
+    user	0m2.236s
+    sys	0m0.208s
+    48M	3.1.0.tar.gz
 
-real	0m12.753s
-user	0m12.752s
-sys	0m0.128s
-45M	3.1.0.tar.bz2
+    real	0m12.753s
+    user	0m12.752s
+    sys	0m0.128s
+    45M	3.1.0.tar.bz2
 
-real	0m26.003s
-user	0m26.096s
-sys	0m0.480s
-41M	3.1.0.tar.xz
+    real	0m26.003s
+    user	0m26.096s
+    sys	0m0.480s
+    41M	3.1.0.tar.xz
 
-real	0m13.141s
-user	0m19.708s
-sys	0m0.232s
-40M	3.1.0.7z
+    real	0m13.141s
+    user	0m19.708s
+    sys	0m0.232s
+    40M	3.1.0.7z

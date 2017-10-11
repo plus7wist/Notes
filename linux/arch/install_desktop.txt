@@ -1,38 +1,38 @@
 创建新用户
 
-  安装完系统，可用 root 登陆之。之后进行一些配置才可以解决问题
+    安装完系统，可用 root 登陆之。之后进行一些配置才可以解决问题
 
-  - 网络问题
+    网络问题
 
-    dhcpcd || wifi-menu
+        dhcpcd(or wifi-menu)
 
-  - 交换文件
+    交换文件
 
-    fallocate -l 1G /swapfile
-    chmod 600 /swapfile
-    mkswap /swapfile
-    swapon /swapfile
+        fallocate -l 1G /swapfile
+        chmod 600 /swapfile
+        mkswap /swapfile
+        swapon /swapfile
 
-    /etc/fstab 写入 /swapfile none swap defaults 0 0。
+        /etc/fstab 写入 /swapfile none swap defaults 0 0。
 
-  - 用户
+    用户
 
-    useradd -m -G wheel gc
-    passwd gc
+        useradd -m -G wheel gc
+        passwd gc
 
-  - sudo
-    
-    pacman -S sudo
-    visudo # 去注释 %whell ALL=(ALL)ALL
-    reboot
+    sudo
+      
+        pacman -S sudo
+        visudo # 去注释 %whell ALL=(ALL)ALL
+        reboot
 
 安装桌面系统
 
-  sudo dhcpcd (or wifi-menu)
-  sudo pacman -S xf86-video-intel xorg xfce4 xfce4-goodies sddm
-  sudo systemctl enable sddm
-  sudo disable netctl
-  pacman -Syu network-manager
-  sudo systemcrl enable NetworkManager
-  pacman -S network-manager-applet
-  sudo reboot
+    sudo dhcpcd (or wifi-menu)
+    sudo pacman -S xf86-video-intel xorg xfce4 xfce4-goodies sddm
+    sudo systemctl enable sddm
+    sudo disable netctl
+    pacman -Syu network-manager
+    sudo systemcrl enable NetworkManager
+    pacman -S network-manager-applet
+    sudo reboot

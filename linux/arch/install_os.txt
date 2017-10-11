@@ -1,84 +1,85 @@
 BIOS 还是 EFI
 
-  /sys/firmware/efi/efivars 存在说明是 EFI/GPT 引导方式；否则是 BIOS/MBR 方式。
+      /sys/firmware/efi/efivars 存在说明是 EFI/GPT 引导方式；否则是 BIOS/MBR
+      方式。
 
-  我是后者。
+      我是后者。
 
 联网
-  
-  有线：dhcpcd；无线 wifi-menu。用 ping 测试。
+    
+    有线：dhcpcd；无线 wifi-menu。用 ping 测试。
 
 时间设置
 
-  timedatectl set-ntp 1
+    timedatectl set-ntp 1
 
 分区
 
-  fdisk -l # 查看当前分区
-  fdisk /dev/sda # 给 sda 分区
-  
-    n 创建分区
-    p 查看分区表
-    w 写入修改
+    fdisk -l # 查看当前分区
+    fdisk /dev/sda # 给 sda 分区
+    
+      n 创建分区
+      p 查看分区表
+      w 写入修改
 
-  mkfs.ext4 /dev/sda1 # 格式化
-  mount /dev/sda1 /mnt
+    mkfs.ext4 /dev/sda1 # 格式化
+    mount /dev/sda1 /mnt
 
 源
 
-  /etc/pacman.d/mirrorlist # 优先的靠前
+    /etc/pacman.d/mirrorlist # 优先的靠前
 
 base 包
 
-  pacstrap /mnt base base-devel
+    pacstrap /mnt base base-devel
 
 配置 fstab
 
-  genfstab -L /mnt >> /mnt/etc/fstab
+    genfstab -L /mnt >> /mnt/etc/fstab
 
-  写完之后阅读一下。
+    写完之后阅读一下。
 
 更改 root
 
-  arch-chroot /mnt
+    arch-chroot /mnt
 
 设置时区
-  
-  ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-  hwclock --systohc
+    
+    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+    hwclock --systohc
 
 安装一些包
 
-  pacman -s vim dialog wpa_supplicant ntfs-3g
+    pacman -s vim dialog wpa_supplicant ntfs-3g
 
 设置 locale
 
-  /etc/locale.gen 去注释 zh_{CN,HK,TW}.UTF-8 和 en_US.UTF-8。
+    /etc/locale.gen 去注释 zh_{CN,HK,TW}.UTF-8 和 en_US.UTF-8。
 
-  locale-gen
+    locale-gen
 
-  /etc/locale.conf 写入 LANG=en_US.UTF-8。
+    /etc/locale.conf 写入 LANG=en_US.UTF-8。
 
 主机名设置
 
-  /etc/hostname 写入一个名字：gc-test
+    /etc/hostname 写入一个名字：gc-test
 
-  /etc/hosts 写入：
+    /etc/hosts 写入：
 
-    127.0.0.1 zsq-test.localdomain  zsq-test
+        127.0.0.1 zsq-test.localdomain  zsq-test
 
 设置 root 密码：passwd
 
 处理引导问题
 
-  pacman -S intel-ucode os-prober grub
-  grub-install --target=i386-pc /dev/sda
-  grub-mkconfig -o /boot/grub/grub.cfg
-  
-  最后一个，如果报 warning，那么到 /etc/lvm/lvm.conf 改 use_lvmetad 为
-  0 再试一次。
+    pacman -S intel-ucode os-prober grub
+    grub-install --target=i386-pc /dev/sda
+    grub-mkconfig -o /boot/grub/grub.cfg
+    
+    最后一个，如果报 warning，那么到 /etc/lvm/lvm.conf 改 use_lvmetad 为
+    0 再试一次。
 
-  pacman -S linux
+    pacman -S linux
 
 exit
 
