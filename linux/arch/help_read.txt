@@ -1,0 +1,25 @@
+ArchWiki 阅读指南
+
+  一般用户还是 root 用户
+
+    # mkinitcpio -p linux
+    $ makepkg -s
+
+    用 # 开头的命令用 root 权限执行；用 $ 开头的只要一般用户权限。
+
+  安装软件包
+    
+    Install the foobar package. 要执行：
+
+    # pacman -S foobar
+
+    Install the foobar[^AUR] package. 需要打开 foobar 链接，下载 PKGBUILD，
+    解压，验证，然后执行：
+
+    $ makepkg -sri
+
+  控制 systemd 单元
+
+    要求启动、启用、停止、重启某个 systemd 单元。要执行：
+
+    # systemctl start example.servive
