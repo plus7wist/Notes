@@ -1,0 +1,18 @@
+Debian 一直维护至少三个版本：
+
+1. stable   最近一次发行。
+2. testing  有更多新版本的软件。
+3. unstable 存放了开发工作。
+
+Debian 发行版每隔一段时间更新一次。当前稳定版本是 Debian-9，代号是 stretch；
+前一个是 Debian-8，代号是 jessie。而 Debian-10 就是现在的 testing 版本，代号
+叫做 buster。
+
+另外，无论什么时候 unstable 的版本的代号都叫做 sid。也是就说现在的 sid 是指
+Debian-11，等 buster 发布变成稳定半，sid 就指 Debian-12 了。
+
+<del>会不会不叫 Debian-10 而叫 Debian-A？</del>
+
+每个稳定版本会得到 3 年的完整支持，和额外两年的长期支持。与 Ubuntu 的 LTS 时
+间一样长。当然 Debian 发布版本比 Ubuntu 少很多，基本可以看作 Ubuntu 会不断
+发布中间版本。
