@@ -25,16 +25,19 @@ problem.getSuccessors() # 获取后继列表
 算法是基于宽度优先搜索的变式。BFS 在搜索的时选择队列中的第一个元素，而 UCS 则
 选择队列中代价最小的元素。
 
-%% search.zip 里提供了优先队列的实现，可以取出优先级最小的元素。
+P.S. search.zip 里提供了优先队列的实现，可以取出优先级最小的元素。
 
-|   while not queue.isEmpty():
-|       state = queue.pop();
-|       currentDistance = distance[state];
-|       for successor, action, cost in problem.getSuccessors(state):
-|           newDistance = cost + currentDistance;
-|           if successor not in distance or newDistance < distance[successor]:
-|               distance[successor] = newDistance;
-|               queue.update(successor, newDistance);
+    # Begin search
+    while not queue.isEmpty():
+        state = queue.pop();
+        currentDistance = distance[state];
+        for successor, action, cost in problem.getSuccessors(state):
+            newDistance = cost + currentDistance;
+            # If newDistance is better for this successor
+            if successor not in distance or newDistance < distance[successor]:
+                distance[successor] = newDistance;
+                queue.update(successor, newDistance);
+    # End search
 
 并不是到达 goal 之后就结束算法，因为显然还可能有其他的路线到达这个点。
 
