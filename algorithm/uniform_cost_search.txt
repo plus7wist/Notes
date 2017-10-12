@@ -26,3 +26,32 @@ problem.getSuccessors() # 获取后继列表
 选择队列中代价最小的元素。
 
 %% search.zip 里提供了优先队列的实现，可以取出优先级最小的元素。
+
+|   while not queue.isEmpty():
+|       state = queue.pop();
+|       currentDistance = distance[state];
+|       for successor, action, cost in problem.getSuccessors(state):
+|           newDistance = cost + currentDistance;
+|           if successor not in distance or newDistance < distance[successor]:
+|               distance[successor] = newDistance;
+|               queue.update(successor, newDistance);
+
+并不是到达 goal 之后就结束算法，因为显然还可能有其他的路线到达这个点。
+
+也就跟 BFS 不同，不采用 cache 保证每个点只 expand 一次（从队列中取出并且访问
+他们的后继的过程叫做 expand）。
+
+优化策略
+
+    但是依然可以采取策略优化，可以在更新了 distance 之后，略过 goal 点。goal 点
+    放入队列是没有意义的，因为它不可能扩展出到达自身的更短的路径（这里假设图中
+    没有负权）。
+
+    此外，当前的待 expand 的点，如果其 distance 大于等于目前求出的
+    distance[goal]，那么这个点也就不用扩展。
+
+确定路径
+
+    在每次更新 distance 之后，设置 prevMove[successor] = (state, action)。并
+    在搜索结束之后，从 goal 开始逆推 action 列表。最后将 action 列表反过来
+    即可。
