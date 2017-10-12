@@ -1,0 +1,7 @@
+autocrlf = input
+
+    提交会把 CRLF 转换成 LF。检出的时候保持原样。
+
+safecrlf = true
+
+    拒绝提交混合 LF 和 CRLF 的文件。
