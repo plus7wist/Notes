@@ -1,0 +1,7 @@
+cd
+mkdir -p .vim/bundle
+mkdir -p .vim/plugin
+cd .vim/bundle
+git clone git@github.com:tell-k/vim-autopep8.git
+cd ../../plugin
+ln -s ../bundle/vim-autopep8/ftplugin/python_autopep8.vim python_autopep8.vim
