@@ -23,3 +23,17 @@
     转换编码工具。
 
     $ iconv -f GBK -t UTF-8 input.txt -o output.txt
+
+- column
+
+    常用 column -t 来对齐一个多列的文件
+    
+    $ cat items.txt
+    0 1 2 3
+    apple pen banana cat
+    $ column -t items.txt > items_formated.txt
+    $ cat items_formated.txt
+    0      1    2       3
+    apple  pen  banana  cat
+
+    在 vim 里使用 !column -t 对齐文档是很常用的技巧。
