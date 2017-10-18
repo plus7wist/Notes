@@ -1,0 +1,19 @@
+安装依赖：
+
+    sudo apt-get install build-essential
+    sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev \
+        libavformat-dev libswscale-dev
+    sudo apt-get install python-dev python3-dev
+    pip install numpy --user
+    pip3 install numpy --user
+    sudo apt-get install libtbb2 libtbb-dev libjpeg-dev libpng-dev\
+        libtiff-devlibjasper-dev libdc1394-22-dev
+
+用 cmake 构建 makefile，将 BUILD_opencv_python2 和 BUILD_opencv_python3
+设置为 true。
+
+构建 makefile 的过程中，可能会卡在 ippicv 的下载。你可以手动下载，然后覆盖
+这个包。
+
+    ippicv: https://raw.githubusercontent.com/Itseez/opencv_3rdparty/
+    81a676001ca8075ada498583e4166079e5744668/ippicv/ippicv_linux_20151201.tgz

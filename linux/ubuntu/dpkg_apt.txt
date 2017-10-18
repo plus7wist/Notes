@@ -1,0 +1,9 @@
+apt-mark showmanual
+apt-mark showauto
+
+dpkg -l 'gnome*'
+dpkg --list 'gnome*'
+
+dpkg -l | grep '^rc'
+
+apt-cache show gnome
