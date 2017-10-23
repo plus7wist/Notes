@@ -1,0 +1,24 @@
+printf 是 stdio.h/cstdio 提供的标准输出函数. 它定义为:
+
+int printf(const char *format, ...);
+
+它还有一些姊妹篇, 用以从不同的接口, 输出到不同的地方. 这些函数基本上可以表示
+为:
+
+[v][f|s|sn]printf
+
+先无视 v, f s sn 分别表示输出到文件, 到字符串, 到有限制长度的字符串. 入口定义
+与 printf 基本一致, 输出目的地用最前的参数来表示. 例如 snprintf 定义成:
+
+snprintf(char* target, size_t limit, const char* format, ...);
+
+对于加 v 的版本, 采用 ``stdarg.h/cstdarg'' 里的 ``va_list'' 结构传递要格式化的
+参数列表, 而不是使用 ``...''. 例如, vfprintf 定义成:
+
+vfprintf(FILE *target, const char *format, va_list args);
+
+-----------
+
+scanf 是对应的格式输入, 也有对应的情况:
+
+[v][s|f]scanf
