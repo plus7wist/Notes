@@ -1,0 +1,24 @@
+ls
+
+--color=never
+    不显示颜色
+
+-F  通过后缀来显示文件的类型
+        /   表示目录
+        @   表示链接
+        *   表示可执行档
+        还有一些别的
+
+-p  在目录后显示 /, 是 -F 的弱化版本
+
+-Q  将输出用引号引用起来
+
+--group-directories-first
+    字面意思
+
+-A  显示除了 . 和 .. 之外的所有文件
+
+alias ls='ls -p --group-directories-first'
+alias l='ls -F'
+alias la='ls -A'
+alias ll='ls -alF'
