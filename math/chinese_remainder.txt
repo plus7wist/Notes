@@ -1,0 +1,17 @@
+设 m n 是两个互素的正整数，那么对任意分别在范围 range(m) range(n) 中的整数对
+a b，一定存在整数 t，使得
+
+  (t % m == a) && (t % n == b)
+
+考察 l = [i * m + a for i in range(n)]
+
+  l[i] % m 都是 a。
+
+再考察
+
+  l[i] = l[j] (mod n)
+  
+  i * m + a == j * m + a (mod n)
+  
+因为 n m 互素，所以 i == j (mod n)，而 l 长度只有 n，这意味着 l[i] % n 两两不同。因此
+必须有一个 l[i] % n 为 b。
