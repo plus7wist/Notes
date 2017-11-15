@@ -1,0 +1,29 @@
+﻿今天晚上 FQ 给我一道题。
+
+  let a = PI / 4
+  
+  let foo(x) = (sin(x) ** 2) / (1 + exp(x))
+  
+  print integral[-a^a](foo)
+
+起初我没有头绪，但是后来发现这样一条性质：
+
+  let g(x) = f(-x)
+  
+  truth integral[-a^a](f) == integral[-a^a](g)
+
+这是比较直观的：从图像上看，这个积分是相互水平翻转的两个区域面积；如果要形式化说明的话，
+只要认识到 f(x)-f(-x) 是一个奇函数也就可以做到。
+
+那么：
+
+  let bar(x) = foo(x)
+  
+  truth bar(x) == (sin(-x) ** 2) / (1 + exp(-x))
+  truth bar(x) == (sin(x) ** 2) * exp(x) / (1 + exp(x))
+
+  truth foo(x) + bar(x) == sin(x) ** 2
+  
+  truth integral[-a^a](foo) == 1/2 * integral[-a^a](foo + bar)
+
+最后一行让问题变得简单了。
