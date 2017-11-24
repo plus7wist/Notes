@@ -1,0 +1,42 @@
+a   an object
+i   inner object
+
+w W s p 表示 word WORD sentence paragraph
+
+word 是字母数字下划线的连续组合，或者连续的空白部分。
+WORD 是非空白的连续组合，或者空行。可以发现 WORD 一般都比 word 大。
+sentence 语句
+paragraph 段落
+
+这四个前面加上 a 或者 i 表示出 8 种 text-objects。
+
+还有一些根定界符有关的 text-objects，这里只举例 i 的情景：
+
+    i( i[ i{ i< i" i' i`
+
+可以发现都是一些``括号''的左边，他们代表的意思，就是配对的这种``括号''内部的部分。另外，i 加上括号的右边也是一样的意思。而 i 换成 a，则将定界符也包含进去。i( 和 i{ 可能用的很多，所以专门有别名，是 ib 和 iB。
+
+text-object 表示一段内容，而不是一个动作（motion）或者操作（operation），所以它们本身并不能产生任何作用。必须和操作结合起来使用。
+
+常用在 text-object 上的操作是：
+
+v 选中
+y 复制
+c 改变（删除并进入插入模式）
+d 删除
+~ 改变大小写
+gu 变成小写
+gU 变成大写
+
+---------------
+
+举例
+
+    ci" 修改当前字符串的内容（删除再输入）
+    diw 删除当前单词（字母数字下划线）
+    yiw 复制当前单词，这个在你想替换它的时候很有用
+
+辨析 diw dw
+
+    operation + text-object 只要求你光标在当前对象内部。
+    dw 是 operation + motion 的作为，其实这可以等效成从当前光标到 motion 目的地的内容视作一个 text-object。
