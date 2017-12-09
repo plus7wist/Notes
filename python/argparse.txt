@@ -1,0 +1,23 @@
+argparse 用来解析命令行参数。
+
+argparse.ArgumentParser 是其核心类，一般用一个 description 初始化，代表这个命令
+行的描述。下面设 parser 是一个此类对象。
+
+parser.add_argument 是最常用的函数。调用若干 add_argument 之后，
+parser.arg_parse(arg_list) 会得到一个名字空间 args，也就是解析好的命令行参数。
+上述是 parser 普遍用法。也即 add_argument 定义文法，arg_parse 解析语言。
+
+add_argument 的定义法：
+
+1. 位置参数 add_argument('foo')，那么 args.foo 即为对应在 arg_list 中的参数。
+
+2. 选项参数 add_argument('-b', '--bar')，args.bar 即 -b B 或 --bar B 或 --bar=B
+   中的 B。
+
+3. 可空的选项参数 add_argument('-b', '--baz', action='store_const', const=C,
+   default=D)。当有这个选项，却没有给参数的时候，args.baz 是 C；没有这个选项的
+   时候，选择的是 D。
+
+4. action='store_const' 行为就是上述的样子，这其实是一个二分类的选项。而 True
+   和 False 二分类显然更常见，所以有了 store_true 和 store_false 两个选项。
+   前者在有选项的时候值是 True，否则是 False，后者则相反。
