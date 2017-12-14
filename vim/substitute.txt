@@ -1,0 +1,12 @@
+[range]s/<pattern>/<string>/[g]
+
+string
+    &   整个匹配到的串
+    \1  第 1 个组
+    \2  第 2 个组
+    \&  &
+    \\  \
+
+
+example
+    %s/count/&er/g      count -> counter
