@@ -1,0 +1,121 @@
+1.1 Get Start
+=======================
+
+
+** The Structure of AWK Program
+
+pattern  { action }
+
+$3 > 0 { print $1 }
+$3 == 0 { print $1, $2 * $3 }
+
+
+1.2 Simple Output
+===================
+
+
+print       # print the line
+print $0    # same
+print $2    # print the 2rd field
+print NF    # number of fields
+print $NF   # print the last field (hack)
+print NR    # current line number
+
+
+1.3 Fancier Output
+=====================
+
+
+printf("%d + %d = %d\n", $1, $2, $1 + $2)
+
+
+1.4 Selection
+=================
+
+
+Awk pattern are good for selecting interesting lines from the input for futher
+processing. Since a pattern without an action prints all lines matching the
+pattern, many awk programs consist of nothing more than a single pattern. this
+section gives some examples of useful patterns
+
+$2 >= 5
+$1 + $2 >= 5
+$1 == "Susie"
+/Susie/         # print all lines that contain 'Susie'
+
+Patterns can be combined with parentheses and the logical operators &&, || and
+!.
+
+the special partten BEGIN and END matches before/after the first/last line of
+the first/last file.
+
+
+1.5 Computing with AWK
+=======================
+
+
+** counting
+
+$3 > 5  { count = count + 1 }
+END     { print count       }
+
+** max
+
+$2 > max2 { max2 = $2  }
+END       { print max2 }
+
+** string concatenation
+
+{ names = names $1 }
+END { print names  }
+
+** last line
+
+{ last = $0 }
+
+** length of string
+
+{ print $1, length($1) }
+
+
+1.6 Control-Flow
+================
+
+
+if (n > 0) {
+    ...
+} else {
+    ...
+}
+
+while (...) {
+    ...
+}
+
+for (; ; ) {
+    ...
+}
+
+
+1.7 Arrays
+===============
+
+
+E.X. reverse lines
+
+{ lines[NR] = $0 }
+END {
+    # NR in END environment is the total numbar of lines
+    for (i = NR; i >= 1; i = i - 1) {
+        print lines[i]
+    }
+}
+
+
+1.8 Some Example
+=================
+
+
+NF > 0  # erase empty lines
+
+NF > 0 || (NF == 0 && pre_NF > 0) { pre_NF = NF; print }
