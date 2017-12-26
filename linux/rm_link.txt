@@ -1,0 +1,4 @@
+when tmp is a link to a directory.
+
+rm tmp  # will delete this link
+rm tmp/ # try to delete the target directory, than fail
