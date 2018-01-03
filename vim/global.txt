@@ -1,0 +1,24 @@
+Multiple repeats
+
+:[range]g[lobal]/{pattern}/[cmd]
+
+    Execute the Ex command [cmd] (default ":p") on the
+    lines within [range] where {pattern} matches.
+
+g! 和 v 与之相反，操作剩下的行。上述 / 可以用其他一些字符替换。
+
+To repeat a non-Ex command, you can use the ":normal" command: >
+    :g/pat/normal {commands}
+Make sure that {commands} ends with a whole command, otherwise Vim will wait
+for you to type the rest of the command for each match.  The screen will not
+have been updated, so you don't know what you are doing.  See |:normal|.
+
+这两者是相同的
+
+  :g/pattern/s//replace/g
+  :%s/pattern/replace/g
+
+这两者有区别
+
+  :g/^$/d   # 删除空行
+  :%s/^$//  # 不会发生变化
