@@ -1,0 +1,8 @@
+[core]
+  quotePath = false # 不「引用」路径，使用默认设置会让 git status 里中文被转义。
+
+[push]
+  default = simple # git push 只推送主分，不然会推送所有匹配的分支。
+
+[log]
+  date = iso

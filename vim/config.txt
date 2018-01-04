@@ -1,0 +1,20 @@
+set textwidth=78
+set colorcolumn=80
+
+set formatoptions+=Bm
+  B join 行的时候，在多字节处不插入空格。
+  m 允许多字节字符处换行。
+  r 换行自动添加注释符号
+  o 用 o O 插入新行的时候自动插入注释符号
+
+set wildmenu
+  命令补全
+
+set exrc
+  运行当前目录下的 .vimrc .exrc .gvimrc 文件
+
+set secure
+  因为上一条的无条件执行脚本，所以要提高安全检查
+
+let mapleader="<\space>"
+nnoremap <leader><space> :%s#\s\+##<cr>

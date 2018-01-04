@@ -1,0 +1,23 @@
+ibus rime 配置：
+
+cd ~/.config/ibus/rime/
+cp default.yaml default.custom.yaml
+
+patch:
+  menu/page_size: 6
+  punctuator/half_shape:
+    > : 》
+    < : 《
+
+注意下面两个的不同
+
+patch:
+  punctuator:
+    half_shape:
+      ...
+# 修改了整个 punctuator 映射
+
+patch：
+  punctuator/half_shape:
+    ...
+# 只修改了 punctuator 映射里的 half_shape 子映射。

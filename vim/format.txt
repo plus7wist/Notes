@@ -1,0 +1,12 @@
+format text
+
+    gq 自动处理一个范围内的换行。
+
+    :center :ce
+        文字居中
+
+    :left   :le
+        文字左对齐，可以用作去缩进。
+
+    :right  :ri
+        文字右对齐。
