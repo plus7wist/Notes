@@ -1,0 +1,24 @@
+sudo apt install rcs
+
+rcs 是用来控制版本的工具，与 git 相比弱了不少，但是也胜在简单。
+
+rcs file
+  创建一个 file,v（对是逗号）的只读文件，其他什么也不做，这之后就可以开始版本控
+  制了。
+
+ci file
+  检入（checkin）file 这个文件。file 会消失，file,v 中会增加一个提交。第一次 ci
+  会让你输入这个文件的描述，提交的描述默认是 Initial revision；之后的 ci 会要求
+  输入这次提交的描述。
+
+co file
+co file,v
+  检出（checkout）file 这个文件，会创建一个新的 file 文件，但是是只读的。
+
+co -l file
+co -l file,v
+  检出的同时锁上这个文件。这样创建到的 file 就是可以修改的。
+
+rlog file
+rlog file,v
+  查看文件的版本信息。
