@@ -1,47 +1,16 @@
-uget+aria2
-===========
-
-
-<https://linux.cn/article-7369-1.html> 介绍了 linux 下十大下载工具，有空我再看
-看……
-
-我还是选择了标题上的这两个。
-
------------------------------------------------------
 sudo add-apt-repository ppa:plushuang-tw/uget-stable
 sudo apt-get update
 sudo apt-get install uget
 sudo add-apt-repository ppa:t-tujikawa/ppa
 sudo apt-get update
 sudo apt-get install aria2
------------------------------------------------------
-
-uget 的设置/插件中选择使用 aria2。
+aria2c -i links.txt
 
 
-tree
-==========
+$ iconv -f GBK -t UTF-8 input.txt -o output.txt
 
 
-终端工具，画出目录的结构。
-
-
-iconv
-==========
-
-
-转换编码工具。
-
-$ iconv =f GBK =t UTF=8 input.txt =o output.txt
-
-
-column
-==========
-
-
-常用 column =t 来对齐一个多列的文件
-
-------------------------------------------
+常用 column -t 来对齐一个多列的文件
 $ cat items.txt
 0 1 2 3
 apple pen banana cat
@@ -49,6 +18,30 @@ $ column -t items.txt > items_formated.txt
 $ cat items_formated.txt
 0      1    2       3
 apple  pen  banana  cat
-------------------------------------------
-
 在 vim 里使用 !column -t 对齐文档是很常用的技巧。
+
+
+xargs -I{} <cmd use {} as argument>
+cat image_list.txt | xargs -I{} cp {} image_archive
+
+
+find . -name '*.mp4' -exec ls -l {}\;
+find (pwd) -name '*.jpg' > image_list.txt
+find . -name '*.cpp' -o -name '*.o'    # find match *.cpp OR *.o
+find . -type f -cmin 10   # regular file & changed in 10 minute
+
+
+sudo updatedb
+locate xxxx
+locate -i xxx # ignore case
+locate -r xxx # regex
+
+
+tar -cz -f xxx.tar.gz xxx # gzip
+tar -cj -f xxx.tar.bz2 xxx # bzip2
+tar -cJ -f xxx.tar.xz xxx # xz
+tar -c -f xxx.tar xxx
+# -p --same-permissions 保持文件的 mod
+tar -czp -f xxx.tar.gz xxx
+tar -x -f xxx.tar.gz -C target-dir # extract
+TIPS: xxx.tar 一般称作 tarfile；xxx.tar.gz 等一般称作 tarball
