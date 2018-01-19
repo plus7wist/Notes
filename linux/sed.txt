@@ -1,0 +1,19 @@
+# print original text and command output
+sed -f script.sed file.txt
+
+# only print command output
+sed -n -f script.sed file.txt
+
+s/regex/text/
+s/regex/text/g
+s/regex/text/2g   # start replace form the 2-th match of regrex
+
+3,10d     # delete 3-10 lines
+/regex/d  # delete line contain regex
+/regex/c\text # change line contain regex to text, text is at least a newline symbol
+/regex/a\text # append
+
+/regex/p # print line
+/regex/= # print line number
+
+y/ABCDEFGHIJKLNMOPQRSTUVWXYZ/abcdefghijklnmopqrstuvwxyz/
