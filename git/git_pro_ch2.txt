@@ -1,0 +1,69 @@
+untracked ---> unmodified ---> modifide ---> staged
+          add             edit          stage
+untracked <--- unmodified <----------------> staged
+         remove               commit
+------------------------------------------------------
+
+git diff
+    current files VS staged files
+git diff --cached
+    staged files VS last commit(HEAD)
+
+
+git log
+    -p 选项展开显示每次提交的内容差异
+    -2 则仅显示最近的两次更新
+    -p --word-diff 某些时候，单词层面的对比，比行层面的对比，更加容易观察。
+    --stat，仅显示简要的增改行数统计
+
+
+撤消操作
+-------------------
+
+$ git commit --amend # 修改最后一次提交
+$ git reset HEAD benchmarks.rb # 取消已经暂存（git add）的文件
+$ git checkout -- benchmarks.rb # 取消对文件的修改
+
+
+远程仓库的使用
+-------------------
+
+$ git remote show origin
+    remote 的 url
+    git push 的默认分支
+    没有同步的分支
+    本地存在，但是远程不存在的分支
+    git pull 会合并什么分支（依据当前分支不同而不同）
+
+$ git remote rename oschina gitee
+$ git remote rm origin
+
+
+打标签
+--------------------
+
+$ git tag               # 列出已有的标签
+$ git tag -l 'v1.4.2.*' # 列出匹配的标签
+$ git tag -a v1.4 -m 'version 1.4 zzz'
+$ git show v1.4
+$ git tag -s v1.5 -m 'version 1.5 kkk' # GPG sign
+$ git tag v1.6 # 轻量级标签
+$ git tag -v v1.4.2.1 # 验证标签
+$ git tag -a v1.2 9fceb0
+
+$ git push origin v1.5 # 分享标签
+$ git push origin --tags # 分享所有标签
+
+
+Git 命令别名
+--------------------
+
+ci commit 
+co checkout
+br branch
+st status
+
+git config --global alias.unstage 'reset HEAD --'
+git unstage file.txt
+
+git config --global alias.last 'log -1 HEAD' # last commit
