@@ -1,0 +1,61 @@
+@@ 定义
+
+opencv-python -> np.array   pyMat
+opencv-c++    -> cv::mat    cppMat
+
+
+@@ 图像
+
++-----------------+    ^
+|                 |    |
+|                 |  height
+|                 |    |
++-----------------+    v
+
+<----- width ----->
+
+
+@@ 矩阵对应
+
+height = len(pyMat)    = cppMat.rows
+width  = len(pyMat[0]) = cppMat.cols
+
+
+@@ cv::Size
+
+template<typename Type>
+class Size
+{
+  typedef Type value_type;
+
+  Size(Type width, Type height);
+
+  Size(Size const &);
+
+  template<typename OtherType>
+  operator Size<OtherType>() const;
+};
+
+
+@@ cv::Rect
+
+cv::Mat image = cv::imread(...);   // 读取一张图片
+cv::Rect roi(x, y, width, height); // 设定 ROI
+image = image(roi);                // 裁剪图像
+
+# 对应在 Python 里
+pyMat = pyMat[roi.y: roi.y + roi.cols,
+              roi.x: roi.x + roi.rows];
+
+          roi.x
+           v
+       +----------------------+
+       |                      |
+roi.y >|   +-------+          | ^
+       |   |       |          | | roi.height
+       |   +-------+          | v
+       |                      |
+       +----------------------+
+           <------->
+           roi.width
+
