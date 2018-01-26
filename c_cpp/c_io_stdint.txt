@@ -1,0 +1,31 @@
+scanf   scan  format
+printf  print format
+
+用一系列的占位符控制输入输出。
+
+stdint.h 头文件定义了一些位数固定的类型
+
+1. exactly
+
+  int8_t   int16_t   int32_t   int64_t
+  uint8_t  uint16_t  uint32_t  uint64_t
+
+2. at least
+
+  int_least8_t ...
+
+3. fast
+
+  int_fast8_t ...
+
+对应还有类型的最大最小值 UINT8_MAX INT_LEAST8_MIN 等。
+
+这些类型的 format 占位符定义在 inttypes.h 里
+
+#define O_i64 "%"PRIi64
+#define I_i64 "%"SCNi64
+
+int64_t a, b;
+scanf(I_i64" "I_i64, &a, &b);
+printf(O_i64"\n", a + b);
+
