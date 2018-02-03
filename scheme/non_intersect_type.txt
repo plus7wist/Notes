@@ -1,0 +1,15 @@
+没有任何对象可以满足下面任意两个或者两个以上的谓词：
+
+boolean?
+char?
+number?
+pair?
+port?
+procedure?
+string?
+symbol?
+vector?
+
+'() 是一个隶属于其自身类型的特殊对象，不能满足上面任何一个谓词。
+
+尽管有独立的 boolean 类型（#t 和 #f），但是 Scheme 可以让更多的类型参与条件判断。
