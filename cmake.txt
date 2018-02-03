@@ -1,0 +1,52 @@
+编译选项
+-----------
+
+add_definitions(-DFOO -DBAR ...)  # 添加编译宏
+set(CMAKE_CXX_STANDARD 11)        # C++11 标准
+set(CMAKE_C_COMPILER gcc-5)       # 指定 C 编译器
+
+set(CMAKE_CXX_FLAGS_RELEASE "-Wall -O3")
+set(CMAKE_CXX_FLAGS_DEBUG "-Wall -O0")
+
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
+set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
+
+include_directories("${CMAKE_SOURCE_DIR}/include")
+
+
+目标
+-------
+
+add_executable(name source_1 source_2 ... source_n)
+# name 是可执行文件
+
+add_dependencies(target_name d1 d2 ...)
+# target-name 依赖 d1 d2 ... 存在
+
+add_library(<name>
+    [STATIC | SHARED | MODULE]
+        [EXCLUDE_FROM_ALL]
+            source1 source2 ... sourceN)
+
+include(common.cmake) # 直接包含代码，一般用作配置
+add_subdirectory(dir) # 处理 dir 目录里的 CMakeLists.txt
+
+
+例子
+-------
+
+cmake_minimum_required(VERSION 2.8)
+project(opencv_test)
+# opencv 的 find_package 安装在 cmake 制定的位置时
+find_package(OpenCV REQUIRED)
+add_executable(main.bin main.cc)
+target_link_libraries(main.bin ${OpenCV_LIBS})
+
+或者
+
+cmake_minimum_required(VERSION 2.8)
+project(opencv_test)
+# opencv 的 cmake 文件路径
+set(OpenCV_DIR "/opt/opencv/default/share/OpenCV")
+add_executable(main.bin main.cc)
+target_link_libraries(main.bin ${OpenCV_LIBS})
