@@ -1,0 +1,2 @@
+update ~/.config/user-dirs.dirs
+then xdg-user-dirs-update
