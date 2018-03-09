@@ -1,0 +1,6 @@
+~/.config/xfce4/terminal/terminalrc
+
+MiscCursorBlinks=FALSE
+MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK
+# TERMINAL_CURSOR_SHAPE_UNDERLINE
+# TERMINAL_CURSOR_SHAPE_IBEAM
