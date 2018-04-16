@@ -1,10 +1,10 @@
-@@ 定义
+## 定义
 
 opencv-python -> np.array   pyMat
 opencv-c++    -> cv::mat    cppMat
 
 
-@@ 图像
+## 图像
 
 +-----------------+    ^
 |                 |    |
@@ -15,17 +15,21 @@ opencv-c++    -> cv::mat    cppMat
 <----- width ----->
 
 
-@@ 矩阵对应
+## 矩阵对应
 
 height = len(pyMat)    = cppMat.rows
 width  = len(pyMat[0]) = cppMat.cols
 
+C++ 矩阵的列数，Python 矩阵的第二维长度，是图像的宽。
+C++ 矩阵的行数，Python 矩阵的第一维长度，是图像的高。
 
-@@ cv::Size
+矩阵第 R 行，第 C 列的像素（或者通道）对应图像模型上的第 C 行第 R 列的地方。
+
+
+## cv::Size
 
 template<typename Type>
-class Size
-{
+class Size {
   typedef Type value_type;
 
   Size(Type width, Type height);
@@ -37,7 +41,7 @@ class Size
 };
 
 
-@@ cv::Rect
+## cv::Rect
 
 cv::Mat image = cv::imread(...);   // 读取一张图片
 cv::Rect roi(x, y, width, height); // 设定 ROI
@@ -58,4 +62,3 @@ roi.y >|   +-------+          | ^
        +----------------------+
            <------->
            roi.width
-
