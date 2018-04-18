@@ -1,0 +1,9 @@
+$ pip install beautifulsoup4
+
+import bs4
+
+soup = bs4.BeautifulSoup(string_or_file, parser)
+# where parser in ('html.parser', 'lxml', ...)
+
+title = soup.title.string
+div_image_box = soup.find('div', class_='image_box')
