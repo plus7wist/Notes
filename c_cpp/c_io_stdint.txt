@@ -22,10 +22,6 @@ stdint.h 头文件定义了一些位数固定的类型
 
 这些类型的 format 占位符定义在 inttypes.h 里
 
-#define O_i64 "%"PRIi64
-#define I_i64 "%"SCNi64
-
-int64_t a, b;
-scanf(I_i64" "I_i64, &a, &b);
-printf(O_i64"\n", a + b);
-
+int64_t x;
+scanf("%" SCNi64, &x);
+printf("%" PRIi64 "\n", x);
