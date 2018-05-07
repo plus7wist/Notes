@@ -1,0 +1,24 @@
+\documentclass{article}
+% preamble
+\begin{document}
+\begin{center}
+    Welcome to \LaTeX.
+\end{center}
+\end{document}
+
+article report book 在 CTEX 包里对应为 ctexart ctexrep ctexbook。主要影响日期和
+行距等设置。在 Ubuntu 的 texlive-lang-chinese 里有支持。
+
+
+\documentclass{article}
+    \title{Introduction to \LaTeX}
+    \author{XXX}
+    \date{\today}
+    \usepackage{lipsum}
+\begin{document}
+    \maketitle
+    \lipsum[1-2] % 生成随机的两段文字
+\end{document}
+
+LaTeX 用几种命令来声明文字的大小。从小到大分别是 tiny scriptsize footnotesize
+small normalsize large Large LARGE huge Huge。
