@@ -1,0 +1,21 @@
+atom:
+list: S-expressions(maybe zero) enclosed by parentheses
+S-exptrssion: atoms and lists
+
+the law of car
+    car is defined only for non-empty lists
+
+(car '(a b c))
+; a
+
+(cdr '(a b c))
+; (b c)
+
+(cons 'a '())
+; (a)
+
+the law of cons
+    cons takes two arguments, the second argument to cons must be a list. the resut is a list.
+
+def atom?(x):
+    return not-pair?(x) and not-null?(x)
