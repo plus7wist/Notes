@@ -1,0 +1,25 @@
+CC = gcc-6
+LD = ld
+
+C_FLAGS = -Wall -Werror -O3 -std=c99 -Iinclude
+LINK_LIBS = -lm
+LINK_PATH = -Lbuild/lib
+
+rule Rso
+    command = $CC $C_FLAGS $in -fPIC -shared -o $out $LINK_LIBS $LINK_PATH
+
+rule Ra
+    command = $CC $C_FLAGS $in -static -o $out $LINK_LIBS $LINK_PATH
+
+rule Rexe
+    depfile = $out.d
+    command = $CC -MMD -MF $out.d $C_FLAGS $in -o $out $LINK_LIBS $LINK_PATH
+
+Tlibmicro_parser_so = build/lib/libmicro_parser.so
+
+build $Tlibmicro_parser_so: Rso src/mpc/mpc.c
+
+Teval_exe = build/exe/eval.exe
+
+build Teval_exe: Rexe src/eval.c || $Tlibmicro_parser_so
+    LINK_LIBS = $LINK_LIBS -lmicro_parser -ledit
