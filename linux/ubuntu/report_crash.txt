@@ -1,0 +1,4 @@
+报告 BUG
+
+    sudo rm /var/crash/*
+    sudo vim /etc/default/apport # enabled=0

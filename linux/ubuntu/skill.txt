@@ -3,8 +3,3 @@
     dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P
 
     命令出错则说明已经清除干净了。
-
-报告 BUG
-
-    sudo rm /var/crash/*
-    sudo vim /etc/default/apport # enabled=0
