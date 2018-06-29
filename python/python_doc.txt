@@ -1,0 +1,6 @@
+sudo apt-get install python3-doc
+
+$ pydoc time
+$ pydoc -k <keyword>
+    # Search for a keyword in the synopsis lines of all available modules
+$ pydoc -g

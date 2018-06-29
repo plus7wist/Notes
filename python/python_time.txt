@@ -1,0 +1,16 @@
+import time
+
+now = time.localtime()
+
+now.tm_yday # 今年的第几天（1-366）
+now.tm_mday # 这个月的第几天（1-31）
+now.tm_wday # 周标记，星期一为 0，顺次直到星期天为 6（0-6）
+
+now.tm_year # 年
+now.tm_mon  # 月（1-12）
+now.tm_mday # 日
+now.tm_hour（0-23）
+now.tm_min（0-59）
+now.tm_sec（0-59）
+
+now.isdet # 有关夏令时的一个标记
