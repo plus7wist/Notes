@@ -4,8 +4,8 @@ argparse.ArgumentParser 是其核心类，一般用一个 description 初始化�
 行的描述。下面设 parser 是一个此类对象。
 
 parser.add_argument 是最常用的函数。调用若干 add_argument 之后，
-parser.arg_parse(arg_list) 会得到一个名字空间 args，也就是解析好的命令行参数。
-上述是 parser 普遍用法。也即 add_argument 定义文法，arg_parse 解析语言。
+parser.parse_args(arg_list) 会得到一个名字空间 args，也就是解析好的命令行参数。
+上述是 parser 普遍用法。也即 add_argument 定义文法，parse_args 解析语言。
 
 add_argument 的定义法：
 
