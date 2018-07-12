@@ -1,0 +1,22 @@
+sudo su
+addusr git
+
+# ssh key
+cd /home/git
+mkdir .ssh
+echo /home/user/.ssh/id_rsa.pub >> .ssh/authorized_keys
+chown -R git:git .ssh
+
+# login shell
+vim /etc/passwd # /bin/bash -> /usr/bin/git-shell
+
+# create repo
+git init --bare repo.git
+chown -R git:git repo.git
+
+exit # root logout
+
+# use local server
+cd repo
+git remote add local git@localhost:~/repo.git
+git push local master
